@@ -1,4 +1,4 @@
-package food.truck.api.endpoint;
+package road.trip.api.endpoint;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
