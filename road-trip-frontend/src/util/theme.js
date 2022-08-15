@@ -44,7 +44,7 @@ const themeOptions = {
 
 export const theme = createMuiTheme(themeOptions);
 
-export const FoodTruckThemeProvider = ({children}) => {
+export const RoadTripThemeProvider = ({children}) => {
     return (
         <StylesProvider jss={jss}>
             <ThemeProvider theme={theme}>

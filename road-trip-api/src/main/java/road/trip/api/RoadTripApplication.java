@@ -1,12 +1,12 @@
-package food.truck.api;
+package road.trip.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-public class FoodTruckApplication {
+public class RoadTripApplication {
     public static void main(String[] args) {
-        SpringApplication.run(FoodTruckApplication.class, args);
+        SpringApplication.run(RoadTripApplication.class, args);
     }
 }

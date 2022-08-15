@@ -43,7 +43,7 @@
     "jest": "26.4.1",
     "jest-dom": "4.0.0",
     "next-compose-plugins": "2.2.0",
-    "next-transpile-modules": "4.1.0"
+    "next-transpile-modules": "9.0.0"
   },
   "name": "package.json",
   "version": "1.0.0",

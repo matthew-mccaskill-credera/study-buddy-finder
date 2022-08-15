@@ -15,7 +15,7 @@ plugins {
     id "org.springframework.boot" version "2.5.4"
 }
 
-group 'food-truck'
+group 'road-trip'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'

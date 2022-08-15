@@ -1,4 +1,4 @@
-package food.truck.api.user;
+package road.trip.api.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
