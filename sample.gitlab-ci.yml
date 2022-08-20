@@ -1,0 +1,30 @@
+build-job:
+  stage: build
+  script:
+# This set of instructions simply navigates to the road-trip-api and
+# road-trip-frontend folders and builds a docker image based on the
+# docker files it finds there. This assumes there is a file named
+# "Dockerfile" in each directory.
+    - cd road-trip-api
+    - docker build -t road-trip-api .
+    - cd ..
+    - cd road-trip-frontend
+    - ls -a
+    - docker build -t road-trip-frontend .
+    - cd ..
+
+
+deploy-prod:
+  stage: deploy
+  script:
+# This script simply runs the images that were built in the previous step.
+# This assumes there is a file named "docker-compose.yml" in the root
+# directory.
+    - docker run -dp 8080:8080 road-trip-api
+    - docker run -dp 3000:3000 road-trip-frontend
+    - docker compose up -d
+# it is important you prune your docker repository after all containers
+# are deployed. This is because all images used in the build stages are
+# saved by docker; this can quickly consume a lot of memory after a few
+# builds.
+    - docker image prune -af
