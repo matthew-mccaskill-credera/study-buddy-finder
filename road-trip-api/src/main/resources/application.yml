@@ -1,2 +1,10 @@
 server:
   port : 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5432/compose-postgres
+    username: compose-postgres
+    password: compose-postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
