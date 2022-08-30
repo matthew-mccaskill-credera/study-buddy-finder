@@ -57,7 +57,7 @@
 
 	- Setup an account with GCP if you don't already have one.
 	- Create a Linux VM in GCP: This will be your production server.
-		- Enable the Compute Engine API, and create a Linux VM.
+		- Enable the Compute Engine API, and create a Linux VM Instance under that resource.
 		- check the options for allowing both HTTP and HTTPS traffic to the VM. This should give your VM an external IP address once it's created.
 		- Navigate to "VM instances" tab and click the "Set up firewall rules" option.
 		- Select the "default-allow-http" rule, and select "Edit" at the top of the page.
