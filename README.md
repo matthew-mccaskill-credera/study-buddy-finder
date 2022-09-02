@@ -68,6 +68,7 @@
 		- register the GitLab runner using the following instructions (for Linux; The runner executor should be 'shell'): https://docs.gitlab.com/runner/register/index.html 
 		- install docker on your VM, using the following instructions (using the repository): https://docs.docker.com/engine/install/debian/#install-using-the-repository 
 		- run the following command, giving your gitlab runner permissions to run docker commands: `sudo usermod -aG docker gitlab-runner` 
+		- Go to 'Settings > CI/CD' in Gitlab and expand the "Runners" tab. Disabled shared runners by toggling the option under the "Shared runners" column
 	- Write a gitlab-cli.yml file.
 		- This file tells the GitLab runner what to do whenever a commit is made to the branch the file is in; You can learn more here: https://docs.gitlab.com/ee/ci/quick_start/
 		- We want our runner to build a docker image for both our frontend and backend on a commit and then deploy those images as containers, along with our database image, to our production server. The way this is done is largely up to you; we have provided sample Dockerfiles and a sample gitlab-cli.yml file to give an example of how it could be achieved.
