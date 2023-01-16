@@ -32,6 +32,7 @@
             3. On the right-hand side of IntelliJ, click on the "Database" tab
             4. For the road-trip-planner database, right click and navigate to New > Schema
             5. Add a new database named road-trip-planner and hit OK
+				- If you encounter an error, try watching this video: https://www.youtube.com/watch?v=ra-FOOHjD2s
         - Startup the API from IntelliJ SpringBoot Run Configuration
             - Specify VM Options
               -Dspring.profiles.active=development
@@ -39,7 +40,6 @@
           - You should see the following output:
               - GET localhost:8080/ping
               - **pong!**
-        - If you encounter an error, try watching this video and drop a like: https://www.youtube.com/watch?v=ra-FOOHjD2s
 
 2. **road-trip-frontend: Frontend Setup**
 
