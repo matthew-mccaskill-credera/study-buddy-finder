@@ -39,6 +39,7 @@
           - You should see the following output:
               - GET localhost:8080/ping
               - **pong!**
+        - If you encounter an error, try watching this video and drop a like: https://www.youtube.com/watch?v=ra-FOOHjD2s
 
 2. **road-trip-frontend: Frontend Setup**
 
