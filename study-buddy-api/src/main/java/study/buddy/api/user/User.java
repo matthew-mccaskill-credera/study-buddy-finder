@@ -1,4 +1,4 @@
-package road.trip.api.user;
+package study.buddy.api.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

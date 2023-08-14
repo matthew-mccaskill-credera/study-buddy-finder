@@ -38,7 +38,7 @@ const themeOptions = {
 
 export const theme = createTheme(themeOptions);
 
-export const RoadTripThemeProvider = ({children}) => {
+export const StudyBuddyThemeProvider = ({children}) => {
     return (
         <ThemeProvider theme={theme}>
             {children}

@@ -1,4 +1,4 @@
-1. **Road-trip-api: Backend Setup**
+1. **Study-buddy-api: Backend Setup**
 
 	- Install Java 16(OpenJDK)
 	- Install Docker:
@@ -12,8 +12,8 @@
 			- Choose **Mac with Intel chip** or **Mac with Apple chip** depending on your specific machine
 
 	- Setup Project in IntelliJ
-		- Import the project at the road-trip-planner parent dir (root of repository) into IntelliJ using existing sources
-		- Import the inner road-trip-api subdirectory
+		- Import the project at the study-buddy-finder parent dir (root of repository) into IntelliJ using existing sources
+		- Import the inner study-buddy-api subdirectory
 			1. Go File > Project Structure > Modules > + > Import Module
 			2. For this, choose to import using external model with Gradle
 			3. IntelliJ should autodetect your Gradle project and download dependencies
@@ -21,7 +21,7 @@
 			- Install Lombok Plugin for IntelliJ (IntelliJ IDEA > Preferences > Plugins ... Search for "Lombok" by Michail Plushnikov)
 			- Enable Annotation Processing in IntelliJ Compliation (IntelliJ IDEA > Preferences > Build, Execution, Deployment > Compiler > Annotation Processors > Check "Enable annotation processing")
 		- Deploy MySql: https://medium.com/containerum/how-to-deploy-mysql-in-docker-containers-ba870247eff7
-		- From IntelliJ, create the default road-trip-planner database on the server: File > New > Data Source > Mysql
+		- From IntelliJ, create the default study-buddy-finder database on the server: File > New > Data Source > Mysql
             1. Configure the connection:
                - Name: RTP - Local
                - Host: localhost
@@ -30,8 +30,8 @@
                - Password: password
             2. Test Connection and hit OK
             3. On the right-hand side of IntelliJ, click on the "Database" tab
-            4. For the road-trip-planner database, right click and navigate to New > Schema
-            5. Add a new database named road-trip-planner and hit OK
+            4. For the study-buddy-finder database, right click and navigate to New > Schema
+            5. Add a new database named study-buddy-finder and hit OK
 				- If you encounter an error, try watching this video: https://www.youtube.com/watch?v=ra-FOOHjD2s
         - Startup the API from IntelliJ SpringBoot Run Configuration
             - Specify VM Options
@@ -41,18 +41,18 @@
               - GET localhost:8080/ping
               - **pong!**
 
-2. **road-trip-frontend: Frontend Setup**
+2. **study-buddy-frontend: Frontend Setup**
 
 	- Install VSCode: https://code.visualstudio.com/Download
 	- Install Node.js: https://nodejs.org/en/download/
-	- In the terminal, navigate to the road-trip-frontend directory and run the following commands:
+	- In the terminal, navigate to the study-buddy-frontend directory and run the following commands:
 		- `npm init`
 		- `npm install --location=global yarn`
 		- **(Windows PowerShell only)** `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted`
 		- Check yarn version: `yarn –version`
         - `yarn install`
 		- Finally: `yarn dev`
-	- Navigate to http://localhost:3000 - you should see the road trip application
+	- Navigate to http://localhost:3000 - you should see the study buddy application
 
 3. **CI/CD Setup**
 

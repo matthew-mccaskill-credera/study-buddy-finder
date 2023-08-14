@@ -1,4 +1,4 @@
-package road.trip.api.user;
+package study.buddy.api.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package road.trip.api.user;
+package study.buddy.api.user;
 
 import java.util.Optional;
 
