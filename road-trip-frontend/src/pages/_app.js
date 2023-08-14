@@ -1,40 +1,34 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { buildStore } from '../util/redux';
+import { CssBaseline, StyledEngineProvider } from '@mui/material';
 
 import Head from 'next/head';
-import { CssBaseline } from '@material-ui/core';
-import { RoadTripThemeProvider } from '../util/theme';
+import { RoadTripThemeProvider, createEmotionCache } from '../util/theme';
+import { CacheProvider } from '@emotion/react';
 
 let initialState = {};
 let store = buildStore(initialState);
+const clientSideEmotionCache = createEmotionCache();
 
-const RoadTripApp = ({ Component, pageProps }) => {
-    React.useEffect(() => {
-        // Remove the server-side injected CSS.
-        const jssStyles = document.querySelector('#jss-server-side');
-        if (jssStyles) {
-            jssStyles.parentElement.removeChild(jssStyles);
-        }
-    }, []);
-
+const RoadTripApp = ({ Component, pageProps, emotionCache = clientSideEmotionCache }) => {
     return (
         <Provider store={ store }>
-            <Head>
-                <title>My page</title>
-                <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-            </Head>
+            <CacheProvider value={emotionCache}>
+                <Head>
+                    <title>My page</title>
+                    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+                </Head>
 
-            <RoadTripThemeProvider>
-                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-                <CssBaseline />
+                <RoadTripThemeProvider>
+                    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+                    <CssBaseline />
 
-                <Component {...pageProps} />
-            </RoadTripThemeProvider>
+                    <Component {...pageProps} />
+                </RoadTripThemeProvider>
+            </CacheProvider>
         </Provider>
     )
-
-
 };
 
 export default RoadTripApp;
