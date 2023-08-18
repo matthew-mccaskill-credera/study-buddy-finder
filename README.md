@@ -1,5 +1,6 @@
 ## 1. Study-buddy-api: Backend Setup
 
+ - Install IntelliJ IDEA Ultimate Edition (you can use your student email to get a free license for this): https://www.jetbrains.com/idea/download/?section=mac
  - Install Java 16(OpenJDK)
  - Install Docker:
    - Windows:
@@ -20,8 +21,8 @@
    - Configure Lombok
      - Install Lombok Plugin for IntelliJ (IntelliJ IDEA > Preferences > Plugins ... Search for "Lombok" by Michail Plushnikov)
      - Enable Annotation Processing in IntelliJ Compliation (IntelliJ IDEA > Preferences > Build, Execution, Deployment > Compiler > Annotation Processors > Check "Enable annotation processing")
- - Deploy MySql: https://medium.com/containerum/how-to-deploy-mysql-in-docker-containers-ba870247eff7
-   - From IntelliJ, create the default study-buddy-finder database on the server: File > New > Data Source > Mysql
+ - Deploy MySQL: https://medium.com/containerum/how-to-deploy-mysql-in-docker-containers-ba870247eff7
+   - From IntelliJ, create the default study-buddy-finder database on the server: File > New > Data Source > Mysql. _Note: if you are not using IntelliJ Ultimate, you will not have this option. Either swap to IntelliJ Ultimate or manually create the database via the MySQL console that you open using the "Deploy MySQL" link above._
      1. Configure the connection:
         - Name: RTP - Local
         - Host: localhost
