@@ -1,4 +1,4 @@
-## 1. Study-buddy-api: Backend Setup
+## 1. study-buddy-api: Backend Setup
 
  - Install IntelliJ IDEA Ultimate Edition (you can use your student email to get a free license for this): https://www.jetbrains.com/idea/download/?section=mac
  - Install Java 16(OpenJDK)
@@ -64,16 +64,16 @@
    - Navigate to "VM instances" tab and click the "Set up firewall rules" option.
    - Select the "default-allow-http" rule, and select "Edit" at the top of the page.
    - In the "TCP Ports" section, add 8080 and 3000. This will allow you to access those ports from your local machine. If, in the future, you need to add more or different HTTP ports, you would do so in the same way. Also, if you want to add HTTPS ports, you would do so in the same way, just under the "default-allow-https" rule.
- - setup a GitLab runner: The GitLab runner waits for commits to be made to the branch it is configured to watch and runs a user-defined set of commands when one occurs. This runner must be linked to your repository first.
-   - open an SSH terminal to your VM in GCP
-   - install a GitLab runner on the VM using the following instructions (for Debian/Ubuntu/Mint): https://docs.gitlab.com/runner/install/linux-repository.html 
-   - register the GitLab runner using the following instructions (for Linux; The runner executor should be 'shell'): https://docs.gitlab.com/runner/register/index.html 
-   - install docker on your VM, using the following instructions (using the repository): https://docs.docker.com/engine/install/debian/#install-using-the-repository 
-   - run the following command, giving your gitlab runner permissions to run docker commands: `sudo usermod -aG docker gitlab-runner` 
+ - Setup a GitLab runner: The GitLab runner waits for commits to be made to the branch it is configured to watch and runs a user-defined set of commands when one occurs. This runner must be linked to your repository first.
+   - Open an SSH terminal to your VM in GCP
+   - Install a GitLab runner on the VM using the following instructions (for Debian/Ubuntu/Mint): https://docs.gitlab.com/runner/install/linux-repository.html 
+   - Register the GitLab runner using the following instructions (for Linux; The runner executor should be 'shell'): https://docs.gitlab.com/runner/register/index.html 
+   - Install docker on your VM, using the following instructions (using the repository): https://docs.docker.com/engine/install/debian/#install-using-the-repository 
+   - Run the following command, giving your gitlab runner permissions to run docker commands: `sudo usermod -aG docker gitlab-runner` 
    - Go to 'Settings > CI/CD' in Gitlab and expand the "Runners" tab. Disabled shared runners by toggling the option under the "Shared runners" column
  - Write a gitlab-cli.yml file.
    - This file tells the GitLab runner what to do whenever a commit is made to the branch the file is in; You can learn more here: https://docs.gitlab.com/ee/ci/quick_start/
    - We want our runner to build a docker image for both our frontend and backend on a commit and then deploy those images as containers, along with our database image, to our production server. The way this is done is largely up to you; we have provided sample Dockerfiles and a sample gitlab-cli.yml file to give an example of how it could be achieved.
-   - whenever a commit is made, a pipeline should be created for your GitLab project. You can view this pipeline to see its status while it is executing in the "CI/CD -> Pipelines" tab on GitLab.
+   - Whenever a commit is made, a pipeline should be created for your GitLab project. You can view this pipeline to see its status while it is executing in the "CI/CD -> Pipelines" tab on GitLab.
 
 This will get basic CI/CD functionality setup for your project. Feel free to customize this process to fit your needs as the project progresses.
