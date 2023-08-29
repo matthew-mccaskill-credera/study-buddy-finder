@@ -73,7 +73,7 @@
    - Finally, configure your GitHub runner to run as a service in the background and automatically restart if it crashes. Run `sudo ./svc.sh install` and `sudo ./svc.sh start`. More Info: https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service
  - Write a GitHub Actions workflow (CI pipeline) file.
    - This file tells the GitHub runner what to do whenever a commit is made to the branch the file is in; You can learn more here: https://docs.github.com/en/actions/quickstart
-   - We want our runner to build a docker image for both our frontend and backend on a commit and then deploy those images as containers, along with our database image, to our production server. The way this is done is largely up to you; we have provided sample Dockerfiles and a sample GitHub actions workflow file (`.github/workflows/sample-github-actions-ci.yml`) to give an example of how it could be achieved.
+   - We want our runner to build a docker image for both our frontend and backend on a commit and then deploy those images as containers, along with our database image, to our production server. The way this is done is largely up to you; we have provided sample Dockerfiles and a sample GitHub actions workflow file (`sample-github-actions-ci.yml`) to give an example of how it could be achieved.
    - Whenever a commit is made, a workflow should be created for your GitHub project. You can view this workflow to see its status while it is executing in the "Actions" tab on GitHub.
    - To learn more about how to create and run a Docker image from a GitHub Actions workflow, see: 
 
