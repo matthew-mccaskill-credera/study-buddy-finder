@@ -64,16 +64,17 @@
    - Navigate to "VM instances" tab and click the "Set up firewall rules" option.
    - Select the "default-allow-http" rule, and select "Edit" at the top of the page.
    - In the "TCP Ports" section, add 8080 and 3000. This will allow you to access those ports from your local machine. If, in the future, you need to add more or different HTTP ports, you would do so in the same way. Also, if you want to add HTTPS ports, you would do so in the same way, just under the "default-allow-https" rule.
- - Setup a GitLab runner: The GitLab runner waits for commits to be made to the branch it is configured to watch and runs a user-defined set of commands when one occurs. This runner must be linked to your repository first.
+ - Setup a GitHub runner: The GitHub runner waits for commits to be made to the branch it is configured to watch and runs a user-defined set of commands when one occurs. This runner must be linked to your repository first.
    - Open an SSH terminal to your VM in GCP
-   - Install a GitLab runner on the VM using the following instructions (for Debian/Ubuntu/Mint): https://docs.gitlab.com/runner/install/linux-repository.html 
-   - Register the GitLab runner using the following instructions (for Linux; The runner executor should be 'shell'): https://docs.gitlab.com/runner/register/index.html 
+   - Install a GitHub self-hosted runner on the VM using the instructions found by navigating in your GitHub Repository from: Settings > Actions > Runners > New self-hosted runner. Follow the "Download" and "Configure" instructions **EXCEPT FOR THE `./run.sh` COMMAND**.
    - Install docker on your VM, using the following instructions (using the repository): https://docs.docker.com/engine/install/debian/#install-using-the-repository 
-   - Run the following command, giving your gitlab runner permissions to run docker commands: `sudo usermod -aG docker gitlab-runner` 
-   - Go to 'Settings > CI/CD' in Gitlab and expand the "Runners" tab. Disabled shared runners by toggling the option under the "Shared runners" column
- - Write a gitlab-cli.yml file.
-   - This file tells the GitLab runner what to do whenever a commit is made to the branch the file is in; You can learn more here: https://docs.gitlab.com/ee/ci/quick_start/
-   - We want our runner to build a docker image for both our frontend and backend on a commit and then deploy those images as containers, along with our database image, to our production server. The way this is done is largely up to you; we have provided sample Dockerfiles and a sample gitlab-cli.yml file to give an example of how it could be achieved.
-   - Whenever a commit is made, a pipeline should be created for your GitLab project. You can view this pipeline to see its status while it is executing in the "CI/CD -> Pipelines" tab on GitLab.
+   - Run the following command, giving your GitHub runner permissions to run docker commands: `sudo usermod -aG docker <my-username>` (`<my-username>` is the username that you used to log in via SSH to the VM).
+     - To check if `<my-username>` has access to Docker run: `sudo -u <my-username> -H docker info`. This command will fail if that user does not have permission.
+   - Finally, configure your GitHub runner to run as a service in the background and automatically restart if it crashes. Run `sudo ./svc.sh install` and `sudo ./svc.sh start`. More Info: https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service
+ - Write a GitHub Actions workflow (CI pipeline) file.
+   - This file tells the GitHub runner what to do whenever a commit is made to the branch the file is in; You can learn more here: https://docs.github.com/en/actions/quickstart
+   - We want our runner to build a docker image for both our frontend and backend on a commit and then deploy those images as containers, along with our database image, to our production server. The way this is done is largely up to you; we have provided sample Dockerfiles and a sample GitHub actions workflow file (`.github/workflows/sample-github-actions-ci.yml`) to give an example of how it could be achieved.
+   - Whenever a commit is made, a workflow should be created for your GitHub project. You can view this workflow to see its status while it is executing in the "Actions" tab on GitHub.
+   - To learn more about how to create and run a Docker image from a GitHub Actions workflow, see: 
 
-This will get basic CI/CD functionality setup for your project. Feel free to customize this process to fit your needs as the project progresses.
+This will get basic CI/CD functionality setup for your project. Feel free to customize this process to fit your needs as the project progresses. Note that one of your project deliverables will be extending the CI/CD to also support running automated tests.
