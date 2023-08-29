@@ -1,0 +1,54 @@
+name: Sample Build & Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build
+        # This set of instructions simply navigates to the study-buddy-api and
+        # study-buddy-frontend folders and builds a docker image based on the
+        # docker files it finds there. This assumes there is a file named
+        # "Dockerfile" in each directory. If this is different than your project's
+        # file structure, research how to modify these commands to reference the
+        # Dockerfile elsewhere.
+        run: |
+          cd study-buddy-api
+          docker build -t study-buddy-api .
+          cd ..
+          cd study-buddy-frontend
+          docker build -t study-buddy-frontend .
+          cd ..
+
+      - name: Deploy
+        # This script simply runs the images that were built in the previous step.
+        # This assumes there is a file named "docker-compose.yml" in the root
+        # directory.
+        #
+        # If the frontend and backend are already running on the VM, we need to
+        # stop them to free the port and delete them to free the container name
+        # before trying to start the new versions
+        #
+        # It is important you prune your docker repository after all containers
+        # are deployed. This is because all images used in the build stages are
+        # saved by docker; this can quickly consume a lot of memory after a few
+        # builds.
+        #
+        # The docker compose command assumes that you have a docker-compose.yml file
+        # in the root directory of the project. If this is not the case for your
+        # file structure, research how to reference a different file.
+        run: |
+          docker container stop study-buddy-frontend || true
+          docker container stop study-buddy-api || true
+          docker rm study-buddy-frontend || true
+          docker rm study-buddy-api || true
+          docker compose up -d
+          docker run -dp 8080:8080 --name study-buddy-api study-buddy-api
+          docker run -dp 3000:3000 --name study-buddy-frontend study-buddy-frontend
+          docker image prune -af
